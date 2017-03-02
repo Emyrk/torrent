@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/anacrolix/torrent/bencode"
+	"github.com/Emyrk/torrent/bencode"
 )
 
 func TestUnmarshalPex(t *testing.T) {

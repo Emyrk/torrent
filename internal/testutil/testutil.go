@@ -16,7 +16,7 @@ import (
 
 	"github.com/anacrolix/missinggo"
 
-	"github.com/anacrolix/torrent/bencode"
+	"github.com/Emyrk/torrent/bencode"
 	"github.com/anacrolix/torrent/metainfo"
 )
 

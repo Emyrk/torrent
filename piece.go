@@ -5,9 +5,9 @@ import (
 
 	"github.com/anacrolix/missinggo/bitmap"
 
+	pp "github.com/Emyrk/torrent/peer_protocol"
+	"github.com/Emyrk/torrent/storage"
 	"github.com/anacrolix/torrent/metainfo"
-	pp "github.com/anacrolix/torrent/peer_protocol"
-	"github.com/anacrolix/torrent/storage"
 )
 
 // Piece priority describes the importance of obtaining a particular piece.

@@ -32,4 +32,5 @@ type PieceImpl interface {
 	MarkNotComplete() error
 	// Returns true if the piece is complete.
 	GetIsComplete() bool
+	DeletePiece(chunks int) (int64, error)
 }

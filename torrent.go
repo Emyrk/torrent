@@ -23,11 +23,11 @@ import (
 	"github.com/anacrolix/missinggo/slices"
 	"github.com/bradfitz/iter"
 
-	"github.com/anacrolix/torrent/bencode"
+	"github.com/Emyrk/torrent/bencode"
+	pp "github.com/Emyrk/torrent/peer_protocol"
+	"github.com/Emyrk/torrent/storage"
+	"github.com/Emyrk/torrent/tracker"
 	"github.com/anacrolix/torrent/metainfo"
-	pp "github.com/anacrolix/torrent/peer_protocol"
-	"github.com/anacrolix/torrent/storage"
-	"github.com/anacrolix/torrent/tracker"
 )
 
 func (t *Torrent) chunkIndexSpec(chunkIndex, piece int) chunkSpec {
@@ -1223,7 +1223,7 @@ func (t *Torrent) consumeDHTAnnounce(pvs <-chan dht.PeersValues) {
 
 func (t *Torrent) announceDHT(impliedPort bool) (err error) {
 	cl := t.cl
-	ps, err := cl.dHT.Announce(t.infoHash, cl.incomingPeerPort(), impliedPort)
+	ps, err := cl.dHT.Announce(t.infoHash.String(), cl.incomingPeerPort(), impliedPort)
 	if err != nil {
 		return
 	}
@@ -1480,4 +1480,26 @@ func (t *Torrent) queuePieceCheck(pieceIndex int) {
 	piece.QueuedForHash = true
 	t.publishPieceChange(pieceIndex)
 	go t.verifyPiece(pieceIndex)
+}
+
+func (t *Torrent) DeleteTorrent() (int64, error) {
+	t.Drop()
+	if t.info == nil {
+		return 0, nil
+	}
+	var errors string
+	var totalRemoved int64
+	for _, p := range t.pieces {
+		chunks := int(p.length().Int()/t.chunkSize.Int()) + 1
+		removed, err := p.Storage().DeletePiece(chunks)
+		if err != nil {
+			errors += "Error: " + err.Error() + "\n"
+		}
+		totalRemoved += removed
+	}
+
+	if len(errors) != 0 {
+		return 0, fmt.Errorf(errors)
+	}
+	return totalRemoved, nil
 }

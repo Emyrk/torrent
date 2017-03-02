@@ -5,7 +5,7 @@ import (
 
 	"github.com/anacrolix/missinggo"
 
-	"github.com/anacrolix/torrent"
+	"github.com/Emyrk/torrent"
 )
 
 func Example() {

@@ -158,3 +158,31 @@ func (me *boltDBPiece) WriteAt(b []byte, off int64) (n int, err error) {
 	})
 	return
 }
+
+func (me *boltDBPiece) DeletePiece(chunks int) (int64, error) {
+	var removed int64 = 0
+	err := me.db.Update(func(tx *bolt.Tx) error {
+		bucket, err := tx.CreateBucketIfNotExists(data)
+		if err != nil {
+			return err
+		}
+
+		for i := 0; i < chunks; i++ {
+			key := me.chunkKey(i)
+			removed += int64(len(bucket.Get(key[:])))
+			err = bucket.Delete(key[:])
+			if err != nil {
+				// return err
+			}
+		}
+
+		bucket, err = tx.CreateBucketIfNotExists(completed)
+		if err != nil {
+			return err
+		}
+		bucket.Delete(me.key[:])
+
+		return nil
+	})
+	return removed, err
+}

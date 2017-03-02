@@ -26,12 +26,12 @@ import (
 	"github.com/dustin/go-humanize"
 	"golang.org/x/time/rate"
 
-	"github.com/anacrolix/torrent/bencode"
+	"github.com/Emyrk/torrent/bencode"
+	"github.com/Emyrk/torrent/mse"
+	pp "github.com/Emyrk/torrent/peer_protocol"
+	"github.com/Emyrk/torrent/storage"
 	"github.com/anacrolix/torrent/iplist"
 	"github.com/anacrolix/torrent/metainfo"
-	"github.com/anacrolix/torrent/mse"
-	pp "github.com/anacrolix/torrent/peer_protocol"
-	"github.com/anacrolix/torrent/storage"
 )
 
 // Clients contain zero or more Torrents. A Client manages a blocklist, the
@@ -1190,6 +1190,19 @@ func (cl *Client) AddTorrentSpec(spec *TorrentSpec) (t *Torrent, new bool, err e
 	}
 	t.addTrackers(spec.Trackers)
 	t.maybeNewConns()
+	return
+}
+
+func (cl *Client) DeleteTorrent(infohash string) (removed int64, err error) {
+	hash := metainfo.NewHashFromHex(infohash)
+
+	t, ok := cl.torrents[hash]
+	if !ok {
+		return 0, fmt.Errorf("no such torrent")
+	}
+	defer t.close()
+	delete(cl.torrents, hash)
+	removed, err = t.DeleteTorrent()
 	return
 }
 

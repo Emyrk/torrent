@@ -7,7 +7,7 @@ import (
 	"math/rand"
 	"net"
 
-	"github.com/anacrolix/torrent/util"
+	"github.com/Emyrk/torrent/util"
 )
 
 type torrent struct {

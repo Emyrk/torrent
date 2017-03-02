@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"golang.org/x/net/context"
 
-	"github.com/anacrolix/torrent/internal/testutil"
+	"github.com/Emyrk/torrent/internal/testutil"
 )
 
 func TestReaderReadContext(t *testing.T) {

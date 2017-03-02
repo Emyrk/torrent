@@ -20,10 +20,10 @@ import (
 	"github.com/stretchr/testify/require"
 	netContext "golang.org/x/net/context"
 
-	"github.com/anacrolix/torrent"
-	"github.com/anacrolix/torrent/internal/testutil"
+	"github.com/Emyrk/torrent"
+	"github.com/Emyrk/torrent/internal/testutil"
+	"github.com/Emyrk/torrent/storage"
 	"github.com/anacrolix/torrent/metainfo"
-	"github.com/anacrolix/torrent/storage"
 )
 
 func init() {

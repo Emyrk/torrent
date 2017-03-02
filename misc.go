@@ -3,8 +3,8 @@ package torrent
 import (
 	"errors"
 
+	pp "github.com/Emyrk/torrent/peer_protocol"
 	"github.com/anacrolix/torrent/metainfo"
-	pp "github.com/anacrolix/torrent/peer_protocol"
 )
 
 type chunkSpec struct {
