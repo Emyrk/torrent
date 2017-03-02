@@ -1,6 +1,7 @@
 package storage
 
 import (
+	//	"fmt"
 	"io"
 	"os"
 
@@ -48,4 +49,9 @@ func (fs *fileStoragePiece) MarkComplete() error {
 func (fs *fileStoragePiece) MarkNotComplete() error {
 	fs.completion.Set(fs.pieceKey(), false)
 	return nil
+}
+
+func (fs *fileStoragePiece) DeletePiece(chunks int) (int64, error) {
+	// fmt.Println(fs.fileTorrentImpl.fs.baseDir)
+	return 0, os.Remove(fs.fileTorrentImpl.fs.baseDir)
 }

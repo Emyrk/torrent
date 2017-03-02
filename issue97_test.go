@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/anacrolix/torrent/internal/testutil"
-	"github.com/anacrolix/torrent/storage"
+	"github.com/Emyrk/torrent/internal/testutil"
+	"github.com/Emyrk/torrent/storage"
 )
 
 func TestHashPieceAfterStorageClosed(t *testing.T) {

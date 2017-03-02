@@ -26,6 +26,10 @@ func (s *piecePerResource) Close() error {
 	return nil
 }
 
+func (piecePerResource) DeletePiece(chunks int) (int64, error) {
+	return 0, nil
+}
+
 func (s *piecePerResource) Piece(p metainfo.Piece) PieceImpl {
 	completed, err := s.p.NewInstance(path.Join("completed", p.Hash().HexString()))
 	if err != nil {
@@ -48,6 +52,9 @@ type piecePerResourcePiece struct {
 	i resource.Instance
 }
 
+func (piecePerResourcePiece) DeletePiece(chunks int) (int64, error) {
+	return 0, nil
+}
 func (s piecePerResourcePiece) GetIsComplete() bool {
 	fi, err := s.c.Stat()
 	return err == nil && fi.Size() == s.p.Length()

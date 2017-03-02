@@ -16,9 +16,9 @@ import (
 	"github.com/gosuri/uiprogress"
 	"golang.org/x/time/rate"
 
-	"github.com/anacrolix/torrent"
+	"github.com/Emyrk/torrent"
+	"github.com/Emyrk/torrent/storage"
 	"github.com/anacrolix/torrent/metainfo"
-	"github.com/anacrolix/torrent/storage"
 )
 
 func resolvedPeerAddrs(ss []string) (ret []torrent.Peer, err error) {

@@ -4,7 +4,7 @@ import (
 	"io"
 	"sync"
 
-	pp "github.com/anacrolix/torrent/peer_protocol"
+	pp "github.com/Emyrk/torrent/peer_protocol"
 )
 
 type ConnStats struct {

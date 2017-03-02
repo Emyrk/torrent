@@ -7,8 +7,8 @@ import (
 	"os"
 	"sync"
 
-	"github.com/anacrolix/torrent"
-	"github.com/anacrolix/torrent/bencode"
+	"github.com/Emyrk/torrent"
+	"github.com/Emyrk/torrent/bencode"
 )
 
 func main() {

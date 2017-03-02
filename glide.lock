@@ -1,0 +1,126 @@
+hash: b810398ff666c03d6595fd49ce67cf2f020a44f6637131c2419ef012abe69667
+updated: 2017-03-02T16:41:24.206015019-06:00
+imports:
+- name: bazil.org/fuse
+  version: 371fbbdaa8987b715bdd21d6adc4c9b20155f748
+  subpackages:
+  - fs
+  - fuseutil
+- name: github.com/anacrolix/dht
+  version: 41eead1aad955d3ba5011a26cde91b571a150404
+  subpackages:
+  - krpc
+- name: github.com/anacrolix/envpprof
+  version: 0383bfe017e02efb418ffd595fc54777a35e48b0
+- name: github.com/anacrolix/missinggo
+  version: 3a4acd64fabf7ff8b9d5baa5d31be19608178110
+  subpackages:
+  - bitmap
+  - container/xheap
+  - filecache
+  - httptoo
+  - inproc
+  - iter
+  - orderedmap
+  - perf
+  - pproffd
+  - prioritybitmap
+  - pubsub
+  - resource
+  - slices
+- name: github.com/anacrolix/sync
+  version: d29d95568d362a0008c1ffbaea39a3449ea67509
+- name: github.com/anacrolix/tagflag
+  version: 5b2db55b67a0bf8ccc73263116f4f951c71f759d
+- name: github.com/anacrolix/torrent
+  version: c66c4d1744b9c24b03cb5231d7b97a778e9b2226
+  subpackages:
+  - bencode
+  - iplist
+  - logonce
+  - metainfo
+  - util
+- name: github.com/anacrolix/utp
+  version: cb02a8a1ac94501fb8421531cd94d874360d35b1
+- name: github.com/boltdb/bolt
+  version: a705895fdad108f053eae7ee011ed94a0541ee13
+- name: github.com/bradfitz/iter
+  version: 454541ec3da2a73fc34fd049b19ee5777bf19345
+- name: github.com/cznic/b
+  version: bcff30a622dbdcb425aba904792de1df606dab7c
+- name: github.com/docopt/docopt-go
+  version: 784ddc588536785e7299f7272f39101f7faccc3f
+- name: github.com/dustin/go-humanize
+  version: 7a41df006ff9af79a29f0ffa9c5f21fbe6314a2d
+- name: github.com/edsrzf/mmap-go
+  version: 935e0e8a636ca4ba70b713f3e38a19e1b77739e8
+- name: github.com/glycerine/go-unsnap-stream
+  version: 87275cecd8e984c5875577d22da7ce8945df780e
+- name: github.com/go-fsnotify/fsnotify
+  version: 7d7316ed6e1ed2de075aab8dfc76de5d158d66e1
+- name: github.com/golang/snappy
+  version: d9eb7a3d35ec988b8585d4a0068e462c27d28380
+- name: github.com/google/btree
+  version: 316fb6d3f031ae8f4d457c6c5186b9e3ded70435
+- name: github.com/gosuri/uilive
+  version: efb88ccd059957c48f24f9d351d33a0eb00ede41
+- name: github.com/gosuri/uiprogress
+  version: a9f819bfc744fe70043abcc5a6cd0137a678e3d8
+  subpackages:
+  - util/strutil
+- name: github.com/huandu/xstrings
+  version: 3959339b333561bf62a38b424fd41517c2c90f40
+- name: github.com/jessevdk/go-flags
+  version: 460c7bb0abd6e927f2767cadc91aa6ef776a98b4
+- name: github.com/mattn/go-isatty
+  version: 30a891c33c7cde7b02a981314b4228ec99380cca
+- name: github.com/mattn/go-sqlite3
+  version: 7ed900a7c4cc22315a007cc49821cce3baa7be0f
+- name: github.com/mschoch/smat
+  version: 90eadee771aeab36e8bf796039b8c261bebebe4f
+- name: github.com/philhofer/fwd
+  version: 98c11a7a6ec829d672b03833c3d69a7fae1ca972
+- name: github.com/RoaringBitmap/roaring
+  version: 943a2da912da2faacc263c82956d40de0841f15d
+- name: github.com/ryszard/goskiplist
+  version: 2dfbae5fcf46374f166f8969cb07e167f1be6273
+  subpackages:
+  - skiplist
+- name: github.com/spaolacci/murmur3
+  version: 0d12bf811670bf6a1a63828dfbd003eded177fce
+- name: github.com/tinylib/msgp
+  version: 362bfb3384d53ae4d5dd745983a4d70b6d23628c
+  subpackages:
+  - msgp
+- name: github.com/tylertreat/BoomFilters
+  version: 6cd71b875c8a3852dc50277e5e9bcf9473a8ad66
+- name: github.com/willf/bitset
+  version: 5c3c0fce48842b2c0bbaa99b4e61b0175d84b47c
+- name: github.com/willf/bloom
+  version: 278d7d8b14584245fe9f826a30e48d4301bd6fd9
+- name: golang.org/x/net
+  version: 007e530097ad7f954752df63046b4036f98ba6a6
+  subpackages:
+  - context
+- name: golang.org/x/sys
+  version: d75a52659825e75fff6158388dddc6a5b04f9ba5
+  subpackages:
+  - unix
+- name: golang.org/x/time
+  version: f51c12702a4d776e4c1fa9b0fabab841babae631
+  subpackages:
+  - rate
+testImports:
+- name: github.com/davecgh/go-spew
+  version: 6d212800a42e8ab5c146b8ace3490ee17e5225f9
+  subpackages:
+  - spew
+- name: github.com/pmezard/go-difflib
+  version: d8ed2627bdf02c080bf22230dbb337003b7aba2d
+  subpackages:
+  - difflib
+- name: github.com/stretchr/testify
+  version: 69483b4bd14f5845b5a1e55bca19e954e827f1d0
+  subpackages:
+  - assert
+  - require

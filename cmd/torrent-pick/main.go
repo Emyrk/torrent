@@ -19,7 +19,7 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/jessevdk/go-flags"
 
-	"github.com/anacrolix/torrent"
+	"github.com/Emyrk/torrent"
 	"github.com/anacrolix/torrent/metainfo"
 )
 
