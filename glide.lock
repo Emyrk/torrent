@@ -1,5 +1,5 @@
-hash: b810398ff666c03d6595fd49ce67cf2f020a44f6637131c2419ef012abe69667
-updated: 2017-03-02T16:41:24.206015019-06:00
+hash: bd41185457c2411df6120d81eb4fac6ae1f8798dcc25085720928b61109333f1
+updated: 2017-03-02T16:51:48.155064517-06:00
 imports:
 - name: bazil.org/fuse
   version: 371fbbdaa8987b715bdd21d6adc4c9b20155f748
@@ -33,7 +33,7 @@ imports:
 - name: github.com/anacrolix/tagflag
   version: 5b2db55b67a0bf8ccc73263116f4f951c71f759d
 - name: github.com/anacrolix/torrent
-  version: c66c4d1744b9c24b03cb5231d7b97a778e9b2226
+  version: ba3e798b5f050de4b60e0ca163c7c4f567ee7287
   subpackages:
   - bencode
   - iplist

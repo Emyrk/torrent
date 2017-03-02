@@ -21,6 +21,7 @@ import:
 - package: github.com/anacrolix/sync
 - package: github.com/anacrolix/tagflag
 - package: github.com/anacrolix/torrent
+  version: ba3e798b5f050de4b60e0ca163c7c4f567ee7287
   subpackages:
   - iplist
   - metainfo
