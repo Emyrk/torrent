@@ -3,6 +3,7 @@ package storage
 import (
 	"encoding/binary"
 	"path/filepath"
+	"sync"
 
 	"github.com/boltdb/bolt"
 
@@ -40,6 +41,8 @@ type boltDBPiece struct {
 	key [24]byte
 }
 
+var lock sync.RWMutex
+
 func NewBoltDB(filePath string) ClientImpl {
 	ret := &boltDBClient{}
 	var err error
@@ -47,6 +50,7 @@ func NewBoltDB(filePath string) ClientImpl {
 	if err != nil {
 		panic(err)
 	}
+
 	return ret
 }
 
@@ -68,6 +72,8 @@ func (me *boltDBTorrent) Piece(p metainfo.Piece) PieceImpl {
 func (boltDBTorrent) Close() error { return nil }
 
 func (me *boltDBPiece) GetIsComplete() (complete bool) {
+	lock.RLock()
+	defer lock.RUnlock()
 	err := me.db.View(func(tx *bolt.Tx) error {
 		cb := tx.Bucket(completed)
 		// db := tx.Bucket(data)
@@ -83,6 +89,8 @@ func (me *boltDBPiece) GetIsComplete() (complete bool) {
 }
 
 func (me *boltDBPiece) MarkComplete() error {
+	lock.Lock()
+	defer lock.Unlock()
 	return me.db.Update(func(tx *bolt.Tx) error {
 		b, err := tx.CreateBucketIfNotExists(completed)
 		if err != nil {
@@ -93,6 +101,8 @@ func (me *boltDBPiece) MarkComplete() error {
 }
 
 func (me *boltDBPiece) MarkNotComplete() error {
+	lock.Lock()
+	defer lock.Unlock()
 	return me.db.Update(func(tx *bolt.Tx) error {
 		b := tx.Bucket(completed)
 		if b == nil {
@@ -102,6 +112,8 @@ func (me *boltDBPiece) MarkNotComplete() error {
 	})
 }
 func (me *boltDBPiece) ReadAt(b []byte, off int64) (n int, err error) {
+	lock.RLock()
+	defer lock.RUnlock()
 	err = me.db.View(func(tx *bolt.Tx) error {
 		db := tx.Bucket(data)
 		if db == nil {
@@ -133,6 +145,8 @@ func (me *boltDBPiece) chunkKey(index int) (ret [26]byte) {
 }
 
 func (me *boltDBPiece) WriteAt(b []byte, off int64) (n int, err error) {
+	lock.Lock()
+	defer lock.Unlock()
 	err = me.db.Update(func(tx *bolt.Tx) error {
 		db, err := tx.CreateBucketIfNotExists(data)
 		if err != nil {
@@ -160,6 +174,8 @@ func (me *boltDBPiece) WriteAt(b []byte, off int64) (n int, err error) {
 }
 
 func (me *boltDBPiece) DeletePiece(chunks int) (int64, error) {
+	lock.Lock()
+	defer lock.Unlock()
 	var removed int64 = 0
 	err := me.db.Update(func(tx *bolt.Tx) error {
 		bucket, err := tx.CreateBucketIfNotExists(data)
