@@ -1194,6 +1194,8 @@ func (cl *Client) AddTorrentSpec(spec *TorrentSpec) (t *Torrent, new bool, err e
 }
 
 func (cl *Client) DeleteTorrent(infohash string) (removed int64, err error) {
+	cl.mu.Lock()
+	cl.mu.Unlock()
 	hash := metainfo.NewHashFromHex(infohash)
 
 	t, ok := cl.torrents[hash]
