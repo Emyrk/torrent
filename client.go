@@ -1194,16 +1194,15 @@ func (cl *Client) AddTorrentSpec(spec *TorrentSpec) (t *Torrent, new bool, err e
 }
 
 func (cl *Client) DeleteTorrent(infohash string) (removed int64, err error) {
-	cl.mu.Lock()
-	cl.mu.Unlock()
 	hash := metainfo.NewHashFromHex(infohash)
 
-	t, ok := cl.torrents[hash]
-	if !ok {
+	t := cl.torrent(hash)
+	if t == nil {
 		return 0, fmt.Errorf("no such torrent")
 	}
-	defer t.close()
+	cl.mu.Lock()
 	delete(cl.torrents, hash)
+	cl.mu.Unlock()
 	removed, err = t.DeleteTorrent()
 	return
 }

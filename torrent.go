@@ -1484,8 +1484,6 @@ func (t *Torrent) queuePieceCheck(pieceIndex int) {
 
 func (t *Torrent) DeleteTorrent() (int64, error) {
 	t.mu().Lock()
-	defer t.mu().Unlock()
-	t.Drop()
 	if t.info == nil {
 		return 0, nil
 	}
@@ -1499,6 +1497,9 @@ func (t *Torrent) DeleteTorrent() (int64, error) {
 		}
 		totalRemoved += removed
 	}
+	t.mu().Unlock()
+
+	t.Drop()
 
 	if len(errors) != 0 {
 		return 0, fmt.Errorf(errors)
