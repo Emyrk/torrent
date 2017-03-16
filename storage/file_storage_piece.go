@@ -49,3 +49,7 @@ func (fs *fileStoragePiece) MarkNotComplete() error {
 	fs.completion.Set(fs.pieceKey(), false)
 	return nil
 }
+
+func (fs *fileStoragePiece) DeletePiece(chunks int) (int64, error) {
+	return 0, os.Remove(fs.fileTorrentImpl.fs.baseDir + fs.fileTorrentImpl.info.Name)
+}

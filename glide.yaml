@@ -1,0 +1,48 @@
+package: github.com/Emyrk/torrent
+import:
+- package: bazil.org/fuse
+  subpackages:
+  - fs
+- package: github.com/anacrolix/dht
+  subpackages:
+  - krpc
+- package: github.com/anacrolix/envpprof
+- package: github.com/anacrolix/missinggo
+  subpackages:
+  - bitmap
+  - httptoo
+  - iter
+  - perf
+  - pproffd
+  - prioritybitmap
+  - pubsub
+  - resource
+  - slices
+- package: github.com/anacrolix/sync
+- package: github.com/anacrolix/tagflag
+- package: github.com/anacrolix/torrent
+  subpackages:
+  - iplist
+  - metainfo
+- package: github.com/anacrolix/utp
+- package: github.com/boltdb/bolt
+- package: github.com/bradfitz/iter
+- package: github.com/docopt/docopt-go
+- package: github.com/dustin/go-humanize
+- package: github.com/edsrzf/mmap-go
+- package: github.com/go-fsnotify/fsnotify
+- package: github.com/gosuri/uiprogress
+- package: github.com/jessevdk/go-flags
+- package: github.com/mattn/go-sqlite3
+- package: github.com/willf/bloom
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: golang.org/x/time
+  subpackages:
+  - rate
+testImport:
+- package: github.com/stretchr/testify
+  subpackages:
+  - assert
+  - require

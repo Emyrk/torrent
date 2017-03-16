@@ -13,8 +13,8 @@ import (
 	"github.com/bradfitz/iter"
 	"github.com/edsrzf/mmap-go"
 
+	"github.com/Emyrk/torrent/mmap_span"
 	"github.com/anacrolix/torrent/metainfo"
-	"github.com/anacrolix/torrent/mmap_span"
 )
 
 func mmapFile(name string) (mm mmap.MMap, err error) {

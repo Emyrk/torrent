@@ -3,9 +3,9 @@ package torrent
 import (
 	"golang.org/x/time/rate"
 
+	"github.com/Emyrk/torrent/storage"
 	"github.com/anacrolix/dht"
 	"github.com/anacrolix/torrent/iplist"
-	"github.com/anacrolix/torrent/storage"
 )
 
 // Override Client defaults.

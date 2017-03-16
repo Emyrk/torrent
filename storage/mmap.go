@@ -9,8 +9,8 @@ import (
 	"github.com/anacrolix/missinggo"
 	"github.com/edsrzf/mmap-go"
 
+	"github.com/Emyrk/torrent/mmap_span"
 	"github.com/anacrolix/torrent/metainfo"
-	"github.com/anacrolix/torrent/mmap_span"
 )
 
 type mmapStorage struct {
@@ -82,6 +82,10 @@ func (sp mmapStoragePiece) MarkComplete() error {
 func (sp mmapStoragePiece) MarkNotComplete() error {
 	sp.pc.Set(sp.pieceKey(), false)
 	return nil
+}
+
+func (mmapStoragePiece) DeletePiece(chunks int) (int64, error) {
+	return 0, nil
 }
 
 func mMapTorrent(md *metainfo.Info, location string) (mms mmap_span.MMapSpan, err error) {

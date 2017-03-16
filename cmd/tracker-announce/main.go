@@ -6,9 +6,9 @@ import (
 	"math"
 	"strings"
 
-	"github.com/anacrolix/torrent"
+	"github.com/Emyrk/torrent"
+	"github.com/Emyrk/torrent/tracker"
 	"github.com/anacrolix/torrent/metainfo"
-	"github.com/anacrolix/torrent/tracker"
 )
 
 func argSpec(arg string) (ts *torrent.TorrentSpec, err error) {

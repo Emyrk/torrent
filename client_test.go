@@ -27,11 +27,11 @@ import (
 	"github.com/stretchr/testify/require"
 	"golang.org/x/time/rate"
 
-	"github.com/anacrolix/torrent/bencode"
-	"github.com/anacrolix/torrent/internal/testutil"
-	"github.com/anacrolix/torrent/iplist"
+	"github.com/Emyrk/torrent/bencode"
+	"github.com/Emyrk/torrent/internal/testutil"
+	"github.com/Emyrk/torrent/iplist"
+	"github.com/Emyrk/torrent/storage"
 	"github.com/anacrolix/torrent/metainfo"
-	"github.com/anacrolix/torrent/storage"
 )
 
 func init() {
@@ -1065,7 +1065,7 @@ func makeMagnet(t *testing.T, cl *Client, dir string, name string) string {
 	return magnet
 }
 
-// https://github.com/anacrolix/torrent/issues/114
+// https://github.com/Emyrk/torrent/issues/114
 func TestMultipleTorrentsWithEncryption(t *testing.T) {
 	cfg := TestingConfig
 	cfg.DisableUTP = true
