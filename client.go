@@ -1193,7 +1193,7 @@ func (cl *Client) AddTorrentSpec(spec *TorrentSpec) (t *Torrent, new bool, err e
 	return
 }
 
-func (cl *Client) DeleteTorrent(infohash string) (removed int64, err error) {
+/*func (cl *Client) DeleteTorrent(infohash string) (removed int64, err error) {
 	hash := metainfo.NewHashFromHex(infohash)
 
 	t, ok := cl.torrents[hash]
@@ -1202,9 +1202,10 @@ func (cl *Client) DeleteTorrent(infohash string) (removed int64, err error) {
 	}
 	defer t.close()
 	delete(cl.torrents, hash)
+	cl.mu.Unlock()
 	removed, err = t.DeleteTorrent()
 	return
-}
+}*/
 
 func (cl *Client) dropTorrent(infoHash metainfo.Hash) (err error) {
 	t, ok := cl.torrents[infoHash]

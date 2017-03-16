@@ -1492,6 +1492,7 @@ func (t *Torrent) DeleteTorrent() (int64, error) {
 	}
 	var errors string
 	var totalRemoved int64
+	// Because we drop the torrent, this should be safe
 	for _, p := range t.pieces {
 		chunks := int(p.length().Int()/t.chunkSize.Int()) + 1
 		removed, err := p.Storage().DeletePiece(chunks)

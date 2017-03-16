@@ -67,7 +67,6 @@ func (info *Info) BuildFromFilePath(root string) (err error) {
 }
 
 func (info *Info) writeFiles(w io.Writer, open func(fi FileInfo) (io.ReadCloser, error)) error {
-	fmt.Println("[DEBUG] Hit Spot 1")
 	for _, fi := range info.UpvertedFiles() {
 		r, err := open(fi)
 		if err != nil {
