@@ -1483,12 +1483,14 @@ func (t *Torrent) queuePieceCheck(pieceIndex int) {
 }
 
 func (t *Torrent) DeleteTorrent() (int64, error) {
-	t.mu().Lock()
+	//t.mu().Lock()
+	t.Drop()
 	if t.info == nil {
 		return 0, nil
 	}
 	var errors string
 	var totalRemoved int64
+	// Because we drop the torrent, this should be safe
 	for _, p := range t.pieces {
 		chunks := int(p.length().Int()/t.chunkSize.Int()) + 1
 		removed, err := p.Storage().DeletePiece(chunks)
@@ -1497,9 +1499,7 @@ func (t *Torrent) DeleteTorrent() (int64, error) {
 		}
 		totalRemoved += removed
 	}
-	t.mu().Unlock()
-
-	t.Drop()
+	//t.mu().Unlock()
 
 	if len(errors) != 0 {
 		return 0, fmt.Errorf(errors)
