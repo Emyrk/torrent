@@ -1,5 +1,5 @@
 hash: b810398ff666c03d6595fd49ce67cf2f020a44f6637131c2419ef012abe69667
-updated: 2017-03-02T16:41:24.206015019-06:00
+updated: 2017-03-16T15:18:34.987524929-05:00
 imports:
 - name: bazil.org/fuse
   version: 371fbbdaa8987b715bdd21d6adc4c9b20155f748
@@ -33,7 +33,7 @@ imports:
 - name: github.com/anacrolix/tagflag
   version: 5b2db55b67a0bf8ccc73263116f4f951c71f759d
 - name: github.com/anacrolix/torrent
-  version: c66c4d1744b9c24b03cb5231d7b97a778e9b2226
+  version: ba3e798b5f050de4b60e0ca163c7c4f567ee7287
   subpackages:
   - bencode
   - iplist
@@ -103,7 +103,7 @@ imports:
   subpackages:
   - context
 - name: golang.org/x/sys
-  version: d75a52659825e75fff6158388dddc6a5b04f9ba5
+  version: 7a6e5648d140666db5d920909e082ca00a87ba2c
   subpackages:
   - unix
 - name: golang.org/x/time
