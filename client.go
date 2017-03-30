@@ -846,10 +846,10 @@ func (cl *Client) initiateHandshakes(c *connection, t *Torrent) (ok bool, err er
 
 // Do encryption and bittorrent handshakes as receiver.
 func (cl *Client) receiveHandshakes(c *connection) (t *Torrent, err error) {
-	cl.mu.Lock()
-	skeys := cl.receiveSkeys()
-	cl.mu.Unlock()
 	if !cl.config.DisableEncryption {
+		cl.mu.Lock()
+		skeys := cl.receiveSkeys()
+		cl.mu.Unlock()
 		var rw io.ReadWriter
 		rw, c.encrypted, err = maybeReceiveEncryptedHandshake(c.rw(), skeys)
 		c.setRW(rw)
